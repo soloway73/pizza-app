@@ -1,0 +1,58 @@
+.layout {
+  display: flex;
+  min-height: 100dvh;
+}
+
+.sidebar {
+  padding: 30px;
+  border-right: 1px solid var(--separator-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.exit {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.user {
+  margin-bottom: 46px;
+}
+
+.avatar {
+  margin-bottom: 20px;
+  box-shadow: 0px 8px 40px 0px #ffc52940;
+  border-radius: 50%;
+}
+
+.name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: normal;
+  color: var(--text-color);
+}
+
+.email {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: normal;
+  color: #9ea1b1;
+}
