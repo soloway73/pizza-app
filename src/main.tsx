@@ -6,6 +6,7 @@ import "./index.css";
 import { Cart } from "./pages/Cart/Cart";
 import { Error } from "./pages/Error/Error";
 import { Menu } from "./pages/Menu/Menu";
+import { Product } from "./pages/Product/Product";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <Error />,
+      },
+      {
+        path: "/product/:id",
+        element: <Product />,
       },
     ],
   },
