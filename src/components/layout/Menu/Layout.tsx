@@ -1,6 +1,7 @@
-import { Link, Outlet } from "react-router-dom";
-import styles from "./Layout.module.css";
+import { NavLink, Outlet } from "react-router-dom";
 import Button from "../../Button/Button";
+import styles from "./Layout.module.css";
+import cn from "classnames";
 
 export function Layout() {
   return (
@@ -13,14 +14,28 @@ export function Layout() {
         </div>
 
         <div className={styles.menu}>
-          <Link to="/" className={styles.link}>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              cn(styles.link, {
+                [styles.active]: isActive,
+              })
+            }
+          >
             <img src="./menu-icon.svg" alt="иконка меню" />
             Меню
-          </Link>
-          <Link to="/cart" className={styles.link}>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              cn(styles.link, {
+                [styles.active]: isActive,
+              })
+            }
+          >
             <img src="./cart-icon.svg" alt="иконка корзины" />
             Корзина
-          </Link>
+          </NavLink>
         </div>
         <Button className={styles.exit}>
           <img src="/logoutBtn.svg" alt="иконка выйти" />

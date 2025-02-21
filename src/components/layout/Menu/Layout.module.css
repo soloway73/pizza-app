@@ -30,6 +30,14 @@
   gap: 14px;
   text-decoration: none;
   color: var(--text-color);
+
+  &:hover {
+    color: var(--primary-hover-color);
+  }
+}
+
+.active {
+  color: var(--primary-hover-color);
 }
 
 .user {
