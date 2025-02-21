@@ -1,7 +1,7 @@
 import axios from "axios";
 import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
 import { Layout } from "./components/layout/Menu/Layout";
 import { PREFIX } from "./helpers/API";
 import "./index.css";
@@ -37,12 +37,14 @@ const router = createBrowserRouter([
         element: <Product />,
         errorElement: <>Ошибка</>,
         loader: async ({ params }) => {
-          return new Promise((resolve) => {
-            setTimeout(() => {
-              axios
-                .get(`${PREFIX}/products/${params.id}`)
-                .then((data) => resolve(data));
-            }, 2000);
+          return defer({
+            data: new Promise((resolve, reject) => {
+              setTimeout(() => {
+                axios
+                  .get(`${PREFIX}/products/${params.id}`)
+                  .then((data) => resolve(data));
+              }, 2000);
+            }),
           });
 
           // return defer({
