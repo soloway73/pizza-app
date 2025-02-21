@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 23.15px;
+  letter-spacing: 0%;
+  color: #c4c4c4;
+}

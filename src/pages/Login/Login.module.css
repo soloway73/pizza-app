@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 23.15px;
+  letter-spacing: 0%;
+  color: #c4c4c4;
+}
+
+.enterBtn {
+  margin-top: 44px;
+  margin-bottom: 30px;
+}
+
+.paragraph,
+.link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.07px;
+  text-align: center;
+  color: var(--text-secondary-color);
+}
+
+.link {
+  color: var(--primary-color);
+  text-decoration: none;
+  &:hover {
+    color: var(--primary-hover-color);
+  }
+}
