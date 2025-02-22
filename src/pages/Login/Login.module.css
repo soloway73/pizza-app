@@ -41,3 +41,10 @@
     color: var(--primary-hover-color);
   }
 }
+
+.error {
+  background: rgba(231, 22, 22, 0.801);
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+}
