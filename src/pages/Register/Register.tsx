@@ -31,6 +31,11 @@ export function Register() {
     }
   }, [jwt, navigate]);
 
+  useEffect(() => {
+    dispatch(userActions.clearLoginError());
+    dispatch(userActions.clearRegisterError());
+  }, [dispatch]);
+
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     dispatch(userActions.clearLoginError());

@@ -84,6 +84,9 @@ export const userSlice = createSlice({
     clearLoginError: (state) => {
       state.loginErrorMessage = undefined;
     },
+    clearRegisterError: (state) => {
+      state.registerErrorMessage = undefined;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
