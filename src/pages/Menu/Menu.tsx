@@ -48,11 +48,11 @@ export function Menu() {
         <Headling>Меню</Headling>
         <Search placeholder="Введите блюдо или состав" />
       </div>
-      <div>
+      <>
         {error && <>{error}</>}
         {!isLoading && <MenuList products={products} />}
         {isLoading && <>Загружаем продукты...</>}
-      </div>
+      </>
     </>
   );
 }

@@ -3,4 +3,7 @@
   flex-wrap: wrap;
   gap: 40px;
   margin-top: 30px;
+  overflow: auto;
+  max-height: 80dvh;
+  padding-bottom: 32px;
 }

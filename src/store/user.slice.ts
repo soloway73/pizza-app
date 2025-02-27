@@ -3,7 +3,6 @@ import axios, { AxiosError } from "axios";
 import { PREFIX } from "../helpers/API";
 import { LoginResponse, UserResponse } from "../interfaces/auth.interface";
 import { loadState } from "./storage";
-import { store } from "./store";
 
 export const JWT_PERSISTENT_STATE = "userData";
 
@@ -14,6 +13,7 @@ export interface UserState {
   jwt: string | null;
   loginErrorMessage?: string;
   userData?: UserResponse | undefined;
+  registerErrorMessage?: string;
 }
 
 const initialState: UserState = {
@@ -38,12 +38,33 @@ export const login = createAsyncThunk(
 );
 
 export const getData = createAsyncThunk(
-  "/",
+  "user/profile",
   async (params: { jwt: string }) => {
     try {
       const { data } = await axios.get<UserResponse>(`${PREFIX}/user/profile`, {
         headers: { Authorization: `Bearer ${params.jwt}` },
       });
+      return data;
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        throw new Error(e.response?.data.message);
+      }
+    }
+  }
+);
+
+export const registerUser = createAsyncThunk(
+  "user/registerUser",
+  async (params: { email: string; password: string; name: string }) => {
+    try {
+      const { data } = await axios.post<LoginResponse>(
+        `${PREFIX}/auth/register`,
+        {
+          email: params.email,
+          password: params.password,
+          name: params.name,
+        }
+      );
       return data;
     } catch (e) {
       if (e instanceof AxiosError) {
@@ -76,6 +97,15 @@ export const userSlice = createSlice({
     });
     builder.addCase(getData.fulfilled, (state, action) => {
       state.userData = action.payload;
+    });
+    builder.addCase(registerUser.fulfilled, (state, action) => {
+      if (!action.payload) {
+        return;
+      }
+      state.jwt = action.payload.access_token;
+    });
+    builder.addCase(registerUser.rejected, (state, action) => {
+      state.registerErrorMessage = action.error.message;
     });
   },
 });

@@ -1,11 +1,11 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import Button from "../../Button/Button";
-import styles from "./Layout.module.css";
 import cn from "classnames";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../../store/store";
 import { getData, userActions } from "../../../store/user.slice";
-import { useEffect, useState } from "react";
+import Button from "../../Button/Button";
+import styles from "./Layout.module.css";
 
 export function Layout() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export function Layout() {
     if (jwt) {
       dispatch(getData({ jwt }));
     }
-  }, []);
+  }, [dispatch]);
   return (
     <div className={styles.layout}>
       <div className={styles.sidebar}>
