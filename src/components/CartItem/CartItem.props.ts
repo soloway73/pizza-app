@@ -1,8 +1,9 @@
-export interface IProduct {
+export interface CartItemProps {
   id: number;
   name: string;
-  price: number;
   description: string[];
   image: string;
+  price: number;
   rating: number;
+  count: number;
 }
