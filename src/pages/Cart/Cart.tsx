@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { IProduct } from "../../interfaces/product.interface";
 import axios from "axios";
 import { PREFIX } from "../../helpers/API";
+import styles from "../Cart/Cart.module.css";
 
 export function Cart() {
   const [cartProducts, setCartProducts] = useState<IProduct[]>([]);
@@ -26,7 +27,7 @@ export function Cart() {
   }, [items]);
   return (
     <>
-      <Headling>Корзина</Headling>
+      <Headling className={styles.head}>Корзина</Headling>
       {items.map((i) => {
         const product = cartProducts.find((p) => p.id === i.id);
         if (!product) {
