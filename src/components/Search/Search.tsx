@@ -1,6 +1,6 @@
 import cn from "classnames";
+import { forwardRef } from "react";
 import styles from "./Search.module.css";
-import React, { forwardRef } from "react";
 import { SearchProps } from "./Search.props";
 
 const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(

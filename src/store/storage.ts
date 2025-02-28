@@ -4,6 +4,7 @@ export function loadState<T>(key: string): T | undefined {
     if (!jsonState) {
       return undefined;
     }
+    console.log("jsonstate :>> ", jsonState);
     return JSON.parse(jsonState);
   } catch (e) {
     console.log("e :>> ", e);

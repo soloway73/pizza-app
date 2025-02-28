@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
+import { loadState } from "./storage";
+export const CART_PERSISTENT_STATE = "cart";
 export interface CartItem {
   id: number;
   count: number;
@@ -9,14 +10,21 @@ export interface CartState {
   items: CartItem[];
 }
 
+export interface CartPersistentState {
+  cart: CartItem[];
+}
+
 const initialState: CartState = {
-  items: [],
+  items: loadState<CartPersistentState>(CART_PERSISTENT_STATE)?.cart ?? [],
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    clean: (state) => {
+      state.items = [];
+    },
     delete: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((i) => i.id !== action.payload);
     },
