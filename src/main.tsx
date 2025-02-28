@@ -14,7 +14,7 @@ import { Register } from "./pages/Register/Register";
 import { RequireAuth } from "./helpers/RequireAuth";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import { Success } from "./pages/success/success";
+import { Success } from "./pages/success/Success";
 
 const Menu = lazy(() => import("./pages/Menu/Menu"));
 
