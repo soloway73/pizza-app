@@ -1,10 +1,10 @@
 import cn from "classnames";
 import styles from "./Search.module.css";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { SearchProps } from "./Search.props";
 
 const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
-  { className, isValid = true, ...props },
+  { className, isValid = true, value, onChange, ...props },
   ref
 ) {
   return (
@@ -14,6 +14,8 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
         className={cn(styles.input, className, {
           [styles.invalid]: isValid,
         })}
+        onChange={onChange}
+        value={value}
         {...props}
       />
       <img className={styles.icon} src="/search-icon.svg" alt="иконка лупы" />
