@@ -23,14 +23,6 @@
   color: var(--text-color);
 }
 
-.totalCount {
-  color: #bebebe;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 19.07px;
-  letter-spacing: 0%;
-}
-
 .price {
   font-weight: 400;
   font-size: 19px;
@@ -41,6 +33,13 @@
 
 .line span {
   color: var(--sub-color, #9796a1);
+}
+.totalCount {
+  color: #bebebe;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19.07px;
+  letter-spacing: 0%;
 }
 
 .checkout {
@@ -57,4 +56,26 @@
   overflow: auto;
   max-height: 80dvh;
   padding-bottom: 32px;
+}
+
+.emptyCartImg {
+  height: auto;
+  width: 256px;
+  align-self: center;
+}
+
+.emptyCartWrapper {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 300;
+  font-size: 31px;
+  line-height: 37.2px;
+  letter-spacing: 0%;
+  color: var(--text-color);
+}
+
+.toMenuBtn {
+  margin: 25px auto;
 }
