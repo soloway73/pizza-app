@@ -25,6 +25,11 @@ export function Layout() {
   }, [dispatch]);
   return (
     <div className={styles.layout}>
+      <div className={styles.burgerBtn} id="burgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div className={styles.sidebar}>
         <div className={styles.user}>
           <img className={styles.avatar} src="/avatar.png" alt="avatar" />

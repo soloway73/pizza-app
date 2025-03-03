@@ -6,4 +6,6 @@
   overflow: auto;
   max-height: 80dvh;
   padding-bottom: 32px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) #ffffff5e;
 }
