@@ -101,7 +101,7 @@
 .burgerBtn span {
   display: block;
   width: 100%;
-  height: 3px;
+  height: 2px;
   background-color: var(--text-color);
   position: absolute;
   transition: all 0.3s ease;
@@ -130,7 +130,7 @@
 }
 
 .burgerBtn.active span:nth-child(3) {
-  bottom: 50%;
+  bottom: 40%;
   transform: rotate(-45deg);
 }
 
@@ -144,12 +144,23 @@
     background-color: #333;
     transition: left 0.3s ease;
     padding: 0;
+    z-index: 10;
+    align-items: center;
   }
-
-  .menu.active {
+  .menu {
+    font-size: 32px;
+  }
+  .user {
+    margin-top: 100px;
+  }
+  .exit {
+    margin-bottom: 50px;
+  }
+  .sidebar.active {
     left: 0;
   }
   .burgerBtn {
+    z-index: 12;
     display: block;
     top: 50px;
     left: 70px;
@@ -158,13 +169,13 @@
 
 @media (max-width: 500px) {
   .content {
-    padding: 15px 0 40px 15px;
+    padding: 15px 0 40px 0;
   }
   .layout {
     padding-right: 15px;
   }
   .burgerBtn {
     top: 25px;
-    left: 45px;
+    left: 30px;
   }
 }

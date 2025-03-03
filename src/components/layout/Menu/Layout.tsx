@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../../store/store";
@@ -12,7 +12,11 @@ export function Layout() {
   const dispatch = useDispatch<AppDispatch>();
   const { userData, jwt } = useSelector((s: RootState) => s.user);
   const items = useSelector((s: RootState) => s.cart.items);
+  const [burgerIsOpen, setBurgerIsOpen] = useState(false);
 
+  const toggleBurgerMenu = () => {
+    setBurgerIsOpen(!burgerIsOpen);
+  };
   const logout = () => {
     dispatch(userActions.logout());
     navigate("/auth/login");
@@ -25,12 +29,16 @@ export function Layout() {
   }, [dispatch]);
   return (
     <div className={styles.layout}>
-      <div className={styles.burgerBtn} id="burgerBtn">
+      <div
+        className={cn(styles.burgerBtn, { [styles.active]: burgerIsOpen })}
+        id="burgerBtn"
+        onClick={toggleBurgerMenu}
+      >
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <div className={styles.sidebar}>
+      <div className={cn(styles.sidebar, { [styles.active]: burgerIsOpen })}>
         <div className={styles.user}>
           <img className={styles.avatar} src="/avatar.png" alt="avatar" />
           <div className={styles.name}>{userData?.name}</div>
@@ -45,6 +53,7 @@ export function Layout() {
                 [styles.active]: isActive,
               })
             }
+            onClick={toggleBurgerMenu}
           >
             <img src="./menu-icon.svg" alt="иконка меню" />
             Меню
@@ -56,6 +65,7 @@ export function Layout() {
                 [styles.active]: isActive,
               })
             }
+            onClick={toggleBurgerMenu}
           >
             <img src="./cart-icon.svg" alt="иконка корзины" />
             Корзина

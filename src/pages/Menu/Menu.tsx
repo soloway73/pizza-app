@@ -6,6 +6,7 @@ import { IProduct } from "../../interfaces/product.interface";
 import styles from "./Menu.module.css";
 import axios, { AxiosError } from "axios";
 import { MenuList } from "./MenuList/MenuList";
+import { Loading } from "../../components/Loading/Loading";
 
 export function Menu() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -83,7 +84,7 @@ export function Menu() {
       <>
         {error && <>{error}</>}
         {!isLoading && products.length > 0 && <MenuList products={products} />}
-        {isLoading && <>Загружаем продукты...</>}
+        {isLoading && <Loading />}
         {!isLoading && products.length === 0 && <>Ничего не найдено</>}
       </>
     </>

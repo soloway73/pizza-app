@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { cartActions } from "../../store/cart.slice";
+import { Loading } from "../../components/Loading/Loading";
 
 export function Product() {
   // const { id } = useParams();
@@ -19,7 +20,7 @@ export function Product() {
 
   return (
     <>
-      <Suspense fallback={"Загружаю..."}>
+      <Suspense fallback={<Loading />}>
         <Await resolve={data.data}>
           {({ data }: { data: IProduct }) => (
             <>
@@ -29,6 +30,12 @@ export function Product() {
                   onClick={() => navigate("/")}
                 >
                   <img src="/backBtn.svg" alt="Назад" />
+                </button>
+                <button
+                  className={styles.altBackBtn}
+                  onClick={() => navigate("/")}
+                >
+                  <img src="/backBtn.svg" alt="Назад" /> Назад
                 </button>
                 <Headling>{data.name}</Headling>
                 <Button
