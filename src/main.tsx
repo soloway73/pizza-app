@@ -15,6 +15,7 @@ import { RequireAuth } from "./helpers/RequireAuth";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { Success } from "./pages/success/Success";
+import { Loading } from "./components/Loading/Loading";
 
 const Menu = lazy(() => import("./pages/Menu/Menu"));
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense fallback={<>Загрузка...</>}>
+          <Suspense fallback={<Loading />}>
             <Menu />
           </Suspense>
         ),
