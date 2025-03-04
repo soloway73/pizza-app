@@ -165,6 +165,10 @@
     top: 50px;
     left: 70px;
   }
+  .content {
+    overflow: auto;
+    scrollbar-width: none;
+  }
 }
 
 @media (max-width: 500px) {

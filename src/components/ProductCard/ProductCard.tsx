@@ -5,6 +5,7 @@ import { MouseEvent } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { cartActions } from "../../store/cart.slice";
+import LoadableImage from "../LoadableImage/LoadableImage";
 
 function ProductCard(props: ProductCardProps) {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,8 +18,9 @@ function ProductCard(props: ProductCardProps) {
       <div className={styles.card}>
         <div
           className={styles.head}
-          style={{ backgroundImage: `url(${props.image})` }}
+          // style={{ backgroundImage: `url(${props.image})` }}
         >
+          <LoadableImage src={props.image} />
           <div className={styles.price}>
             {props.price}&nbsp;<span className={styles.currency}>₽</span>
           </div>
