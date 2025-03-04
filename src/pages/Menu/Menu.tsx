@@ -7,12 +7,14 @@ import styles from "./Menu.module.css";
 import axios, { AxiosError } from "axios";
 import { MenuList } from "./MenuList/MenuList";
 import { Loading } from "../../components/Loading/Loading";
+import { useDebounce } from "use-debounce";
 
 export function Menu() {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
   const [searchInputValue, setSearchInputValue] = useState<string>("");
+  const [debouncedText] = useDebounce(searchInputValue, 1000);
 
   const getMenu = async () => {
     try {
@@ -68,8 +70,8 @@ export function Menu() {
   }, []);
 
   useEffect(() => {
-    getFilteredMenu(searchInputValue);
-  }, [searchInputValue]);
+    getFilteredMenu(debouncedText);
+  }, [debouncedText]);
 
   return (
     <>
