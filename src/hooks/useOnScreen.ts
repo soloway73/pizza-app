@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, RefObject } from "react";
 
-function useOnScreen(
-  ref: React.MutableRefObject<HTMLElement | null>,
-  rootMargin = "0px"
-) {
+function useOnScreen(ref: RefObject<HTMLElement | null>, rootMargin = "0px") {
   // State and setter for storing whether element is visible
   const [isIntersecting, setIntersecting] = useState(false);
 

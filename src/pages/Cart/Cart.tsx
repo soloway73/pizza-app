@@ -10,6 +10,7 @@ import styles from "../Cart/Cart.module.css";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { cartActions } from "../../store/cart.slice";
+import { Loading } from "../../components/Loading/Loading";
 
 const DELIVERY_FEE = 169;
 
@@ -63,6 +64,7 @@ export function Cart() {
   useEffect(() => {
     loadAllItems();
   }, [items]);
+
   return (
     <>
       <Headling className={styles.head}>Корзина</Headling>
