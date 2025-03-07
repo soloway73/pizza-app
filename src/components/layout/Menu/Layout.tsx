@@ -36,7 +36,6 @@ export function Layout() {
         className={({ isActive }) =>
           cn(styles.cartButtonFixed, {
             [styles.filled]: items.length > 0 && !isActive,
-            // [styles.hidden]: isActive,
           })
         }
       >
@@ -67,7 +66,7 @@ export function Layout() {
             }
             onClick={toggleBurgerMenu}
           >
-            <img src="./menu-icon.svg" alt="иконка меню" />
+            <img src="/menu-icon.svg" alt="иконка меню" />
             Меню
           </NavLink>
           <NavLink
@@ -79,7 +78,7 @@ export function Layout() {
             }
             onClick={toggleBurgerMenu}
           >
-            <img src="./cart-icon.svg" alt="иконка корзины" />
+            <img src="/cart-icon.svg" alt="иконка корзины" />
             Корзина
             <span className={styles.cartCount}>
               {items.reduce((acc, item) => (acc += item.count), 0)}
