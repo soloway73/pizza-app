@@ -5,9 +5,51 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Пиццы длинноногой птицы</title>
+    <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body>
+    <div class="wrapper center" id="loader">
+      <div class="slice">
+        <div class="tomato"></div>
+        <div class="tomato"></div>
+        <div class="olive"></div>
+      </div>
+      <div class="slice">
+        <div class="tomato"></div>
+        <div class="tomato"></div>
+        <div class="olive"></div>
+      </div>
+      <div class="slice">
+        <div class="tomato"></div>
+        <div class="tomato"></div>
+        <div class="olive"></div>
+      </div>
+      <div class="slice">
+        <div class="tomato"></div>
+        <div class="tomato"></div>
+        <div class="olive"></div>
+      </div>
+      <div class="slice">
+        <div class="tomato"></div>
+        <div class="tomato"></div>
+        <div class="olive"></div>
+      </div>
+      <div class="slice">
+        <div class="tomato"></div>
+        <div class="tomato"></div>
+        <div class="olive"></div>
+      </div>
+    </div>
+
     <div id="root"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const loader = document.getElementById("loader");
+        if (loader) {
+          loader.classList.add("hidden");
+        }
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

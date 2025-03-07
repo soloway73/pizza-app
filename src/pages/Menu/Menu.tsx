@@ -30,18 +30,6 @@ export function Menu() {
       setIsloading(false);
       return;
     }
-
-    // try {
-    //   const res = await fetch(`${PREFIX}/products`);
-    //   if (!res.ok) {
-    //     return;
-    //   }
-    //   const data = (await res.json()) as Product[];
-    //   setProducts(data);
-    // } catch (e) {
-    //   console.error(e);
-    //   return;
-    // }
   };
 
   const filterList = (e: ChangeEvent<HTMLInputElement>) => {
