@@ -115,6 +115,10 @@
   transform: rotate(-45deg);
 }
 
+.cartButtonFixed {
+  display: none;
+}
+
 @media (max-width: 820px) {
   .sidebar {
     position: fixed;
@@ -150,6 +154,41 @@
     overflow: auto;
     scrollbar-width: none;
   }
+
+  .cartButtonFixed {
+    display: block;
+    cursor: pointer;
+    z-index: 5;
+    position: fixed;
+    bottom: 75px;
+    right: -250px;
+    border-radius: 50%;
+    background-color: #f58529d2;
+    box-shadow: 18.21px 18.21px 36.43px 0px #d3d1d840;
+    width: 100px;
+    height: 100px;
+    transition: all 0.2s ease;
+  }
+  .filled {
+    right: 50px;
+  }
+  .cartButtonFixed span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+  }
+  .hidden {
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
@@ -162,5 +201,14 @@
   .burgerBtn {
     top: 25px;
     left: 30px;
+  }
+  .cartButtonFixed {
+    width: 70px;
+    height: 70px;
+    bottom: 25px;
+    right: -225px;
+  }
+  .filled {
+    right: 25px;
   }
 }

@@ -28,8 +28,21 @@ export function Layout() {
       dispatch(getData({ jwt }));
     }
   }, [dispatch]);
+
   return (
     <div className={styles.layout}>
+      <NavLink
+        to="/cart"
+        className={({ isActive }) =>
+          cn(styles.cartButtonFixed, {
+            [styles.filled]: items.length > 0 && !isActive,
+            // [styles.hidden]: isActive,
+          })
+        }
+      >
+        <img src="/cart-orange.svg" alt="иконка корзины" />
+        <span>{items.reduce((acc, item) => (acc += item.count), 0)}</span>
+      </NavLink>
       <div
         className={cn(styles.burgerBtn, { [styles.active]: burgerIsOpen })}
         id="burgerBtn"
