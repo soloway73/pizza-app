@@ -5,12 +5,13 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../../store/store";
 import { getData, userActions } from "../../../store/user.slice";
 import Button from "../../Button/Button";
+import { UserProfile } from "../../UserProfile/UserProfile";
 import styles from "./Layout.module.css";
 
 export function Layout() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { userData, jwt } = useSelector((s: RootState) => s.user);
+  const { jwt } = useSelector((s: RootState) => s.user);
   const items = useSelector((s: RootState) => s.cart.items);
   const [burgerIsOpen, setBurgerIsOpen] = useState(false);
 
@@ -40,9 +41,7 @@ export function Layout() {
       </div>
       <div className={cn(styles.sidebar, { [styles.active]: burgerIsOpen })}>
         <div className={styles.user}>
-          <img className={styles.avatar} src="/avatar.png" alt="avatar" />
-          <div className={styles.name}>{userData?.name}</div>
-          <div className={styles.email}>{userData?.email}</div>
+          <UserProfile />
         </div>
 
         <div className={styles.menu}>

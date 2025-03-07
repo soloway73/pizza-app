@@ -14,10 +14,13 @@ export interface UserState {
   loginErrorMessage?: string;
   userData?: UserResponse | undefined;
   registerErrorMessage?: string;
+  isLoading: boolean;
+  error?: string;
 }
 
 const initialState: UserState = {
   jwt: loadState<UserPersistentState>(JWT_PERSISTENT_STATE)?.jwt ?? null,
+  isLoading: false,
 };
 
 export const login = createAsyncThunk(
@@ -98,8 +101,15 @@ export const userSlice = createSlice({
     builder.addCase(login.rejected, (state, action) => {
       state.loginErrorMessage = action.error.message;
     });
+    builder.addCase(getData.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getData.rejected, (state, action) => {
+      state.error = action.error.message;
+    });
     builder.addCase(getData.fulfilled, (state, action) => {
       state.userData = action.payload;
+      state.isLoading = false;
     });
     builder.addCase(registerUser.fulfilled, (state, action) => {
       if (!action.payload) {

@@ -1,0 +1,49 @@
+.avatar {
+  margin-bottom: 20px;
+  box-shadow: 0px 8px 40px 0px #ffc52940;
+  border-radius: 50%;
+}
+
+.name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: normal;
+  color: var(--text-color);
+}
+
+.email {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: normal;
+  color: #9ea1b1;
+}
+
+@keyframes wave-squares {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+.skeleton {
+  margin: 5px;
+  height: 20px;
+  border-radius: 5px;
+  background: rgba(130, 130, 130, 0.2);
+  background: linear-gradient(
+    to right,
+    rgba(130, 130, 130, 0.2) 8%,
+    rgba(130, 130, 130, 0.3) 18%,
+    rgba(130, 130, 130, 0.2) 33%
+  );
+  background-size: 800px 100px;
+  animation: wave-squares 2s infinite ease-out;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 132px;
+  width: 132px;
+}

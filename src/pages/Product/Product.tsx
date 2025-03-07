@@ -1,13 +1,13 @@
-import { Await, useLoaderData, useNavigate } from "react-router-dom";
-import { IProduct } from "../../interfaces/product.interface";
 import { Suspense } from "react";
-import Headling from "../../components/Headling/Headling";
-import styles from "./Product.module.css";
-import Button from "../../components/Button/Button";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store";
+import { Await, useLoaderData, useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
+import Headling from "../../components/Headling/Headling";
+import { IProduct } from "../../interfaces/product.interface";
 import { cartActions } from "../../store/cart.slice";
-import { Loading } from "../../components/Loading/Loading";
+import { AppDispatch } from "../../store/store";
+import styles from "./Product.module.css";
+import { ProductSkeleton } from "./ProductSkeleton/ProductSkeleton";
 
 export function Product() {
   // const { id } = useParams();
@@ -20,7 +20,7 @@ export function Product() {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<ProductSkeleton />}>
         <Await resolve={data.data}>
           {({ data }: { data: IProduct }) => (
             <>
@@ -69,6 +69,7 @@ export function Product() {
                       <img src="/star.svg" alt="иконка звезды" />
                     </div>
                   </div>
+
                   <div className={styles.ingredients}>
                     Состав:
                     <ul>

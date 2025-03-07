@@ -74,7 +74,7 @@ export function Cart() {
             src="/empty-cart.png"
             alt="изображение пустой корзины"
             className={styles.emptyCartImg}
-            placeholder="./placeholder.svg"
+            placeholder="/placeholder.svg"
           />
           {/* <LoadableImage
             src="/empty-cart.png"
