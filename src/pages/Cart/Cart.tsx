@@ -11,6 +11,8 @@ import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { cartActions } from "../../store/cart.slice";
 import { Loading } from "../../components/Loading/Loading";
+import LazyImage from "../../components/LazyImage/LazyImage";
+import LoadableImage from "../../components/LoadableImage/LoadableImage";
 
 const DELIVERY_FEE = 169;
 
@@ -70,11 +72,17 @@ export function Cart() {
       <Headling className={styles.head}>Корзина</Headling>
       {!total && (
         <div className={styles.emptyCartWrapper}>
-          <img
-            className={styles.emptyCartImg}
+          <LazyImage
             src="/empty-cart.png"
             alt="изображение пустой корзины"
+            className={styles.emptyCartImg}
+            placeholder="./placeholder.svg"
           />
+          {/* <LoadableImage
+            src="/empty-cart.png"
+            alt="изображение пустой корзины"
+            className={styles.emptyCartImg}
+          /> */}
           <div>Ваша корзина пуста</div>
           <Button
             className={styles.toMenuBtn}

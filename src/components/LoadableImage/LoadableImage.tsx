@@ -7,6 +7,7 @@ export interface ILoadableImage {
   src: string;
   alt?: string;
   onLoad?(): void;
+  className?: string;
 }
 
 const LoadableImage = (props: ILoadableImage) => {

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import Headling from "../../components/Headling/Headling";
 import Search from "../../components/Search/Search";
 import { PREFIX } from "../../helpers/API";
@@ -48,30 +48,38 @@ export function Menu() {
     setSearchInputValue(e.target.value);
   };
 
-  const getFilteredMenu = async (value: string) => {
-    try {
-      setIsloading(true);
-      const { data } = await axios.get<IProduct[]>(
-        `${PREFIX}/products?name=${value}`
-      );
-      setProducts(data);
-      setIsloading(false);
-    } catch (e) {
-      if (e instanceof AxiosError) {
-        setError(e.message);
+  const getFilteredMenu = useCallback(
+    async (value: string, abortController: AbortController) => {
+      try {
+        setIsloading(true);
+        const { data } = await axios.get<IProduct[]>(
+          `${PREFIX}/products?name=${value}`,
+          { signal: abortController.signal }
+        );
+        setProducts(data);
+        setIsloading(false);
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          setError(e.message);
+        }
+        console.error(e);
+        setIsloading(false);
+        return;
       }
-      console.error(e);
-      setIsloading(false);
-      return;
-    }
-  };
+    },
+    []
+  );
   useEffect(() => {
     getMenu();
   }, []);
 
   useEffect(() => {
-    getFilteredMenu(debouncedText);
-  }, [debouncedText]);
+    const abortController = new AbortController();
+    getFilteredMenu(debouncedText, abortController);
+    return () => {
+      abortController.abort("Component unmounted or new request initiated");
+    };
+  }, [debouncedText, getFilteredMenu]);
 
   return (
     <>
@@ -84,7 +92,7 @@ export function Menu() {
         />
       </div>
       <>
-        {error && <>{error}</>}
+        {error && error != "canceled" && <>{error}</>}
         {!isLoading && products.length > 0 && <MenuList products={products} />}
         {isLoading && <Loading />}
         {!isLoading && products.length === 0 && <>Ничего не найдено</>}

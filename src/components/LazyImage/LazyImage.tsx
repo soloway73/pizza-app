@@ -4,30 +4,28 @@ export interface ILazyImage {
   src: string;
   placeholder: string;
   alt: string;
+  className: string;
 }
-const LazyImage = ({ src, placeholder, alt }: ILazyImage) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+const LazyImage = ({ src, placeholder, alt, ...props }: ILazyImage) => {
+  const [imageSrc, setImageSrc] = useState(placeholder); // Начинаем с заглушки
 
-  // Обработчик ошибки загрузки изображения
-  const handleLoaded = () => {
-    setIsLoaded(true);
-  };
-
-  // Обработчик ошибки загрузки изображения
-  const handleError = () => {
-    setIsLoaded(false);
+  // Обработчик успешной загрузки изображения
+  const handleLoad = () => {
+    setImageSrc(src); // Заменяем заглушку на основное изображение
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "auto" }}>
-      <img
-        src={isLoaded ? src : placeholder}
-        alt={alt}
-        loading="lazy"
-        onLoad={handleLoaded}
-        onError={handleError}
-      />
-    </div>
+    <img
+      src={imageSrc} // Динамический src
+      alt={alt}
+      loading="lazy"
+      onLoad={handleLoad}
+      style={{
+        objectFit: "cover", // Для сохранения пропорций изображения
+        filter: imageSrc === placeholder ? "blur(5px)" : "none", // Размытие для заглушки
+      }}
+      {...props}
+    />
   );
 };
 
