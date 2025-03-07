@@ -1,18 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import Headling from "../../components/Headling/Headling";
-import { AppDispatch, RootState } from "../../store/store";
-import CartItem from "../../components/CartItem/CartItem";
-import { useEffect, useMemo, useState } from "react";
-import { IProduct } from "../../interfaces/product.interface";
 import axios from "axios";
-import { PREFIX } from "../../helpers/API";
-import styles from "../Cart/Cart.module.css";
-import Button from "../../components/Button/Button";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { cartActions } from "../../store/cart.slice";
-import { Loading } from "../../components/Loading/Loading";
+import Button from "../../components/Button/Button";
+import CartItem from "../../components/CartItem/CartItem";
+import Headling from "../../components/Headling/Headling";
 import LazyImage from "../../components/LazyImage/LazyImage";
-import LoadableImage from "../../components/LoadableImage/LoadableImage";
+import { PREFIX } from "../../helpers/API";
+import { IProduct } from "../../interfaces/product.interface";
+import { cartActions } from "../../store/cart.slice";
+import { AppDispatch, RootState } from "../../store/store";
+import styles from "../Cart/Cart.module.css";
 
 const DELIVERY_FEE = 169;
 

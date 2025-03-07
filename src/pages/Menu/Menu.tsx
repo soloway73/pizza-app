@@ -1,13 +1,13 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
+import axios, { AxiosError } from "axios";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 import Headling from "../../components/Headling/Headling";
+import { Loading } from "../../components/Loading/Loading";
 import Search from "../../components/Search/Search";
 import { PREFIX } from "../../helpers/API";
 import { IProduct } from "../../interfaces/product.interface";
 import styles from "./Menu.module.css";
-import axios, { AxiosError } from "axios";
 import { MenuList } from "./MenuList/MenuList";
-import { Loading } from "../../components/Loading/Loading";
-import { useDebounce } from "use-debounce";
 
 export function Menu() {
   const [products, setProducts] = useState<IProduct[]>([]);
