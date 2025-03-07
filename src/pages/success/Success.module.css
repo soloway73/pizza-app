@@ -14,3 +14,9 @@
   text-align: center;
   color: var(--text-color);
 }
+
+@media (max-width: 800px) {
+  .success img {
+    width: 300px;
+  }
+}
